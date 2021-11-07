@@ -42,13 +42,13 @@ public:
     // store extrinsic rotation matrix
     for (int row = 0; row < info_.extrinsic_.rows() - 1; ++row) {
       for (int col = 0; col < info_.extrinsic_.cols() - 1; ++col) {
-        param_msg.intrinsic.at((info_.intrinsic_.cols() - 1) * row + col) =
-            info_.intrinsic_(row, col);
+        param_msg.extrinsic_rot.at((info_.extrinsic_.cols() - 1) * row + col) =
+            info_.extrinsic_(row, col);
       }
     }
     // store extrinsic translation matrix
     for (int row = 0; row < info_.extrinsic_.rows() - 1; ++row) {
-      param_msg.intrinsic.at(row) = info_.intrinsic_.rightCols(1)(row);
+      param_msg.extrinsic_trans.at(row) = info_.extrinsic_.rightCols(1)(row);
     }
     // store distortion coefficients
     for (size_t i = 0; i < info_.distortion_coeff_.size(); ++i) {
